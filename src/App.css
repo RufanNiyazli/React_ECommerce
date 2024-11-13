@@ -1,0 +1,28 @@
+:root {
+  --background-color: #fff3e0;
+  --navbar-color: #795548;
+  --cart-color: #3f51b5;
+  --main-color: #cfd8dc;
+  --text-color: #2e2e2e;
+  --more-color: #2e2e2e;
+  --accent-color: #ffab91;
+
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.flex-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
