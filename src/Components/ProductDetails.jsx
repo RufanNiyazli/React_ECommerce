@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getSelectedItem } from "../Redux/productSlice"; 
+import { getSelectedItem } from "../Redux/productSlice";
 import { FaCirclePlus } from "react-icons/fa6";
 import { FaMinusCircle } from "react-icons/fa";
 import "../Css/ProductDetails.css";
+import { addToBasket } from "../Redux/basketSlice";
 
 function ProductDetails() {
   const { id } = useParams();
   const { selected, loading } = useSelector((store) => store.product);
+  const{price,image,title,description}=selected
   const dispatch = useDispatch();
   const [count, setCount] = useState(0);
 
@@ -20,11 +22,18 @@ function ProductDetails() {
   };
 
   useEffect(() => {
-    
     dispatch(getSelectedItem(id));
   }, [dispatch, id]);
 
-
+  const addBasket = () => {
+    const payload = {
+      id,
+      price,
+      title,
+      count
+    };
+    dispatch(addToBasket(payload));
+  };
 
   return (
     <div className="detail-container">
@@ -40,6 +49,7 @@ function ProductDetails() {
           <span>{count}</span>
           <FaCirclePlus style={{ cursor: "pointer" }} onClick={increment} />
         </div>
+        <button onClick={addBasket}>Basket</button>
       </div>
     </div>
   );
