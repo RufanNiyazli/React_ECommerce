@@ -1,11 +1,16 @@
 import React from "react";
 import Drawer from "@mui/material/Drawer";
 import { useDispatch, useSelector } from "react-redux";
-import { setDrawer } from "../Redux/basketSlice";
+import { setDrawer, deleteBasket } from "../Redux/basketSlice";
+
 import "../Css/Drawer.css";
 function DrawerComponent() {
   const { products, drawer } = useSelector((store) => store.basket);
   const dispatch = useDispatch();
+  const deleteProduc = (product) => {
+    dispatch(deleteBasket({ id: product.id }));
+  };
+
   return (
     <div>
       <Drawer
@@ -27,7 +32,8 @@ function DrawerComponent() {
               <h2>{product.name}</h2>
               <p>Price: ${product.price}</p>
               <p>Quantity: {product.quantity}</p>
-              <button>Delete</button>
+              <p>Count: {product.count}</p>
+              <button onClick={() => deleteProduc(product)}>Sil</button>
             </div>
           ))}
       </Drawer>

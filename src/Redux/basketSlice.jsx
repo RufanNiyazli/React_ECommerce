@@ -37,12 +37,17 @@ export const basketSlice = createSlice({
       }
     },
     deleteBasket: (state, action) => {
-      const findProduct = state.products && state.products.find((product)=>product.id==action.payload.id);
-      findProduct.count-=1
-      if (findProduct.count==0) {
-        const extractedProduct= state.products && state.products.filter((product)=>product.id!=action.payload.id)
-        state.products=[...extractedProduct]
+      const findProduct =
+        state.products &&
+        state.products.find((product) => product.id == action.payload.id);
+      findProduct.count -= 1;
+      if (findProduct.count == 0) {
+        const extractedProduct =
+          state.products &&
+          state.products.filter((product) => product.id != action.payload.id);
+        state.products = [...extractedProduct];
       }
+      writeToBasket(state.products);
     },
     setDrawer: (state) => {
       state.drawer = !state.drawer;
@@ -50,5 +55,5 @@ export const basketSlice = createSlice({
   }
 });
 
-export const { addToBasket, setDrawer,extractedProduct } = basketSlice.actions;
+export const { addToBasket, setDrawer, deleteBasket } = basketSlice.actions;
 export default basketSlice.reducer;
