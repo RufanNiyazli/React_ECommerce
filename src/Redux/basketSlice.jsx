@@ -36,11 +36,19 @@ export const basketSlice = createSlice({
         writeToBasket(state.products);
       }
     },
+    deleteBasket: (state, action) => {
+      const findProduct = state.products && state.products.find((product)=>product.id==action.payload.id);
+      findProduct.count-=1
+      if (findProduct.count==0) {
+        const extractedProduct= state.products && state.products.filter((product)=>product.id!=action.payload.id)
+        state.products=[...extractedProduct]
+      }
+    },
     setDrawer: (state) => {
       state.drawer = !state.drawer;
     }
   }
 });
 
-export const { addToBasket, setDrawer } = basketSlice.actions;
+export const { addToBasket, setDrawer,extractedProduct } = basketSlice.actions;
 export default basketSlice.reducer;

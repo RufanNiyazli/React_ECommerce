@@ -20,13 +20,14 @@ function DrawerComponent() {
         {products &&
           products.map((product) => (
             <div
-            className="drawer"
+              className="drawer"
               key={product.id}
               style={{ padding: "10px", borderBottom: "1px solid #ccc" }}
             >
               <h2>{product.name}</h2>
               <p>Price: ${product.price}</p>
               <p>Quantity: {product.quantity}</p>
+              <button>Delete</button>
             </div>
           ))}
       </Drawer>
