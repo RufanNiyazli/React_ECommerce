@@ -34,4 +34,8 @@
 .count span {
   margin: 0 10px;
 }
-
+button{
+  padding: 10px;
+background-color: bisque;
+color: white;
+}

@@ -4,7 +4,7 @@ import axios from "axios";
 const initialState = {
   products: [],
   selected: {},
-  loading: false,
+  loading: false
 };
 
 const BASE_URL = "https://fakestoreapi.com";
@@ -14,19 +14,18 @@ export const getAllProducts = createAsyncThunk("getAllProducts", async () => {
   return response.data;
 });
 
-export const getSelectedItem = createAsyncThunk("getSelectedItem", async (id) => {
-  const response = await axios.get(`${BASE_URL}/products/${id}`);
-  return response.data;
-});
+export const getSelectedItem = createAsyncThunk(
+  "getSelectedItem",
+  async (id) => {
+    const response = await axios.get(`${BASE_URL}/products/${id}`);
+    return response.data;
+  }
+);
 
 export const productSlice = createSlice({
   name: "product",
   initialState,
-  reducers: {
-    setSelectedProduct: (state, action) => {
-      state.selected = action.payload;
-    },
-  },
+
   extraReducers: (builder) => {
     builder
       .addCase(getAllProducts.pending, (state) => {
@@ -44,8 +43,8 @@ export const productSlice = createSlice({
         state.selected = action.payload;
         state.loading = false;
       });
-  },
+  }
 });
 
-export const { setSelectedProduct } = productSlice.actions;
+export const {} = productSlice.actions;
 export default productSlice.reducer;
