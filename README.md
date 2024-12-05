@@ -110,6 +110,4 @@ Layihədə Redux Toolkit istifadə olunur.
 ## **Lisenziya**  
 Bu layihə [MIT Lisenziyası](https://opensource.org/licenses/MIT) altında lisenziyalaşdırılıb.
 
---- 
 
-Bu README layihənin strukturunu və istifadəsini aydın şəkildə izah edir. Əgər əlavə spesifik xüsusiyyətlər varsa, onları da daxil edə bilərik!
